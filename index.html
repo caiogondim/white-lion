@@ -1,77 +1,366 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
-  <meta charset='utf-8'>
+	<meta charset="UTF-8" />
+	<title>Growl Lion</title>
+	<style>
+		
+		@-webkit-keyframes notification-1 {
+			0%   { opacity: 0; -webkit-transform: scale(0.4);}
+			70%	 { opacity: 0.3; -webkit-transform: scale(1);}
+			80%	 {  opacity: 0.6;-webkit-transform: scale(1.1); }
+			100%  { opacity: 0.8; -webkit-transform: scale(1); }
+		}
 
-  <title>caiogondim/white-lion @ GitHub</title>
+		@-webkit-keyframes notification-2 {
+			0%  {
+				opacity: 0;
+				-webkit-transform: scale(0.6);
+			}
+			100% {
+				opacity: 0.8;
+				-webkit-transform: scale(1);
+			}
+		}
+		
+		@-webkit-keyframes download-pulse {
+			0% {
+				-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.7);
+			}
+			
+			50% {
+				-webkit-box-shadow:0 0 30px rgba(0, 0, 0, 0.7);
+			}
+			
+			100% {
+				-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.7);
+			}
+		}
+		
+		body {
+			margin:0;
+			font-family: 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			color:#333;
+		}
+		
+		::selection {
+			background:#000;
+			color:#FFF;
+		}
+		
+		#banner {
+			height:380px;
+			width:100%;
+			background: #DDD url(images/lion-bg-cropped.jpg) top center;
+			position:fixed;
+			top:0;
+			left:0;
+			z-index:1;
+		}
+		
+		.notification {
+			-webkit-transition: opacity 0.5s ease-in-out;
+			overflow: hidden;
+			margin: 120px auto;
+			border: 1px solid #BEBEBE;
+		/*	border-top: 1px solid rgba(155, 167, 161, 0.1);*/
+			background-color: rgb(240, 240, 240);
+			border-radius: 5px;
+			opacity: 0.8;
+			width: 280px;
+			padding: 10px;
+		/*	-webkit-animation: notification-1 0.5s linear;*/
+			-webkit-animation: notification-2 0.7s ease;
+			-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.4), 0 0 0 1px #FBFBFB inset;
+			display:none;
+		}
+		
+		.notification.active {
+			display:block;
+		}
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #cfcfcf;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #303030; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #303030; }
-    h3 { text-align: center; color: #303030; }
-    a { color: #303030; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+		img {
+			float: left;
+			position: relative;
+			margin: 0 0 0 0;
+			width:32px;
+		}
+
+		#text-wrapper {
+			float: left;
+			width: 213px;
+			position: relative;
+			margin: 0 0 0 30px;
+		}
+
+		#divider {
+			position: absolute;
+			height: 100%;
+			width: 0;
+			left: -18px;
+		/*	left: 55px;*/
+		/*	top: 10px;*/
+			border-left: 1px solid #FBFBFB;
+			border-right: 1px solid #BEBEBE;
+		}
+
+		h1#title {
+			font-size: 13px;
+			color: #404040;
+			border: none;
+			margin: 0 0 3px 0;
+			text-shadow: 0px 1px 1px rgba(255,255,255,1);
+		}
+
+		p#details {
+			font-size: 11px;
+			color: #838392;
+			border: none;
+			margin: 0;
+			line-height:140%;
+			text-shadow: 0px 1px 1px rgba(255,255,255,1);
+		}
+		
+		#wrapper {
+			width:800px;
+			margin:80px auto;
+		}
+		
+		#main {
+
+			width:100%;
+			position:relative;
+		}
+		
+		#main::after {
+			content:"";
+			display:block;
+			height:0;
+			width:100%;
+			margin:60px 0;
+			background-color:purple;
+			border-top:1px solid #666;
+			border-bottom:1px solid #FFF;
+		}
+		
+		#main p a {
+			text-decoration:none;
+			color:#404040;
+		}
+		
+		#main p a:visited {
+			
+		}
+		
+		#main p a:hover {
+			text-decoration:underline;
+		}
+		
+		#description {
+			-webkit-box-shadow:0 0 10px black;
+			height:1000px;
+			width:100%;
+			margin-top:350px;
+			/*background:-webkit-gradient(linear, left top, left bottom, from(#DDD), to(#FFF)),url(images/noise.png) repeat;*/
+			background: url(images/noise-3.png), -webkit-gradient(linear, left top, left bottom, from(#BBB), to(#FFF));
+			z-index:200;
+			position:relative;
+			border-top:1px solid white;
+		}
+		
+		#description h1 {
+			font-size:60px;
+			font-weight:200;
+			text-shadow:#FFF 0 1px 2px;
+		}
+		
+		#description #main > p {
+			font-size:24px;
+			font-weight:200;
+			line-height:130%;
+			color:#666;
+			text-shadow:#FFF 0 1px 1px;
+		}
+		
+		a#download {
+			font-size:25px;
+			font-weight:200;
+			text-decoration:none;
+			-webkit-box-shadow:0 0 5px rgba(0, 0, 0, 0.9);
+			color:#FFF;
+			width:190px;
+			height:45px;
+			padding:15px 30px 0 0;
+			display:block;
+			background:-webkit-gradient(linear, left top, left bottom, from(#6E25FF), to(#371483));
+			-webkit-border-radius:12px;
+			position:absolute;
+			text-align:right;
+			text-shadow:rgba(0, 0, 0, 0.7) 0 1px 2px;
+			margin:20px;
+			top:-20px;
+			right:0;
+			-webkit-transition:-webkit-box-shadow linear 0.3s;
+		}
+		
+		a#download::before {
+			content: "⬇";
+			position:absolute;
+			-webkit-border-radius:30px;
+			border:2px solid #FFF;
+			left:17px;
+			top:13px;
+			text-shadow:rgba(0, 0, 0, 0.7) 0 1px 2px;
+			-webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.7);
+			font-size: 14px;
+			padding: 6px 8px 0 0;
+			height: 24px;
+			width: 22px;
+			text-decoration:none !important;
+		}
+
+		
+		a#download:hover {
+			-webkit-box-shadow:0 0 30px rgba(0, 0, 0, 0.9);			
+/*			-webkit-animation:download-pulse 0.9s linear infinite; */
+		}
+		
+		#description a:active {
+			background:-webkit-gradient(linear, left top, left bottom, from(#371483), to(#6E25FF));
+		}
+		
+		div#highlights {
+
+		}
+		
+		div.highlight {
+			float:left;
+			width:350px;
+			margin-bottom:30px;
+			height:200px;
+		}
+		
+		div.highlight a {
+			color:#404040;
+			text-decoration:none;
+		}
+		
+		div.highlight a:hover {
+			text-decoration:underline;
+		}
+		
+		div.highlight:nth-child(even) {
+			margin-left:80px;
+		}
+		
+		div.highlight h2 {
+			font-weight:200;
+			font-size:30px;
+			text-shadow:#FFF 0 1px 1px;
+		}
+		
+		div.highlight p {
+			line-height:150%;
+			font-size:16px;
+			color:#666;
+			text-shadow:#FFF 0 1px 1px;
+		}
+		
+	</style>
 </head>
-
 <body>
-  <a href="http://github.com/caiogondim/white-lion"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-  <div id="container">
-
-    <div class="download">
-      <a href="http://github.com/caiogondim/white-lion/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/caiogondim/white-lion/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
-
-    <h1><a href="http://github.com/caiogondim/white-lion">white-lion</a>
-      <span class="small">by <a href="http://github.com/caiogondim">caiogondim</a></span></h1>
-
-    <div class="description">
-      A Growl Theme based on OS X Lion
-    </div>
-
-    <h2>Authors</h2>
-<p>Caio Gondim (caio@gond.im)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>Caio Gondim (caio.gondim@gmail.com)<br/>      </p>
-
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/caiogondim/white-lion/zipball/master">zip</a> or
-      <a href="http://github.com/caiogondim/white-lion/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/caiogondim/white-lion</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/caiogondim/white-lion">caiogondim/white-lion</a>
-    </div>
-
-  </div>
-
-  
+	<div id="banner">
+		<div class="notification active" id="notification-itunes">
+			<div>
+				<img class="icon" src="itunes-icon.png" />
+				<div id="text-wrapper">
+					<div id="divider"></div>
+					<h1 id="title">You Shook Me All Night Long</h1>
+					<p id="details">AC/DC<br/>Back in Black <br />3:35</p>
+				</div>	
+			</div>			
+		</div>
+		<div class="notification" id="notification-transmission">
+			<div>
+				<img class="icon" src="transmission-icon.png" />
+				<div id="text-wrapper">
+					<div id="divider"></div>
+					<h1 id="title">Download Complete</h1>
+					<p id="details">Ubuntu</p>
+				</div>	
+			</div>			
+		</div>
+		<div class="notification" id="notification-adium">
+			<div>
+				<img class="icon" src="caiogondim-logo.png" />
+				<div id="text-wrapper">
+					<div id="divider"></div>
+					<h1 id="title">Caio Gondim</h1>
+					<p id="details">Dude, this style is really amazing!</p>
+				</div>	
+			</div>			
+		</div>
+		<div class="notification" id="notification-twitter">
+			<div>
+				<img class="icon" src="darth-vader-avatar.jpg" />
+				<div id="text-wrapper">
+					<div id="divider"></div>
+					<h1 id="title">Mention from darthvader</h1>
+					<p id="details">@caio_gondim I'm your father!</p>
+				</div>	
+			</div>			
+		</div>
+	</div>
+	<div id="description">
+		<div id="wrapper">
+			<div id="main">
+				<h1>WhiteLion</h1>
+				<a href="#download" id="download">Download</a>
+				<p>WhiteLion is a theme for Growl developed by <a href="twitter.com/caio_gondim">@caio_gondim</a> that tries to be as Lion-esque as possible. Some UI of the new OS X, like the new QuickLook and Popovers, served as the basis for this theme.</p>
+			</div>			
+			<div id="highlights">
+				<div class="highlight">
+					<h2>Built to Beauty</h2>
+					<p>This theme was very carefully pixel-perfect built. If you have discovered some errors or have some considerations to make, please, open an issue <a href="#">here</a>.</p>
+				</div>			
+				<div class="highlight">
+					<h2>Open Source</h2>
+					<p>This project is open source. Please, feel free to <a href="#">fork</a> it or open an <a href="#">issue</a> to help make this better for everybody.</p>
+				</div>
+				<div class="highlight">
+					<h2>Inspiration</h2>
+					<p>WhiteLion is heavily inspired in <a href="http://christopherlobay.com/#mono">Mono</a> by Christopher Lobay and <a href="http://www.andreas-heiberg.com/Blog/2011/07/23/growl-growlinglion-lion-inspired-growl-theme/">GrowlingLion</a> by Andreas Heiberg</p>
+				</div>
+				<div class="highlight">
+					<h2>Spread the Word</h2>
+					<p>Spread the word through Twitter and Facebook. Please consider using this URI <a href="#">goo.gl/hFgT</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="coffee-script-compiler.js"></script>
+	<script type="text/coffeescript">
+		
+	</script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		//
+		setInterval(function(){
+			window.notification = $('div.notification.active')
+			if ($('div.notification.active')[0] === $('div.notification:last')[0]) {
+				console.log('if')
+				$('div.notification.active').removeClass('active')
+				$('div.notification:first').addClass('active')
+			} else {
+				console.log('else')
+				$('div.notification.active')
+					.removeClass('active')
+					.next()
+					.addClass('active')
+			}
+		}, 5*1000)
+		
+	</script>
 </body>
 </html>
