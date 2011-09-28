@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>Growl Lion</title>
+	<title>WhiteLion</title>
 	<style>
 		
 		@-webkit-keyframes notification-1 {
 			0%   { opacity: 0; -webkit-transform: scale(0.4);}
 			70%	 { opacity: 0.3; -webkit-transform: scale(1);}
 			80%	 {  opacity: 0.6;-webkit-transform: scale(1.1); }
-			100%  { opacity: 0.8; -webkit-transform: scale(1); }
+			100%  { opacity: 0.9; -webkit-transform: scale(1); }
 		}
 
 		@-webkit-keyframes notification-2 {
@@ -51,7 +51,6 @@
 		#banner {
 			height:380px;
 			width:100%;
-/*			background: #DDD url(images/lion-bg-cropped.jpg) top center;*/
 			background: #DDD url(images/lion-bg-cropped-2.jpg) top center;
 			position:fixed;
 			top:0;
@@ -64,13 +63,11 @@
 			overflow: hidden;
 			margin: 120px auto;
 			border: 1px solid #BEBEBE;
-		/*	border-top: 1px solid rgba(155, 167, 161, 0.1);*/
 			background-color: rgb(240, 240, 240);
 			border-radius: 5px;
 			opacity: 0.8;
 			width: 280px;
 			padding: 10px;
-		/*	-webkit-animation: notification-1 0.5s linear;*/
 			-webkit-animation: notification-2 0.7s ease;
 			-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.4), 0 0 0 1px #FBFBFB inset;
 			display:none;
@@ -99,8 +96,6 @@
 			height: 100%;
 			width: 0;
 			left: -18px;
-		/*	left: 55px;*/
-		/*	top: 10px;*/
 			border-left: 1px solid #FBFBFB;
 			border-right: 1px solid #BEBEBE;
 		}
@@ -162,7 +157,6 @@
 			height:1000px;
 			width:100%;
 			margin-top:350px;
-			/*background:-webkit-gradient(linear, left top, left bottom, from(#DDD), to(#FFF)),url(images/noise.png) repeat;*/
 			background: url(images/noise-3.png), -webkit-gradient(linear, left top, left bottom, from(#BBB), to(#FFF));
 			z-index:200;
 			position:relative;
@@ -222,8 +216,7 @@
 
 		
 		a#download:hover {
-			-webkit-box-shadow:0 0 30px rgba(0, 0, 0, 0.9);			
-/*			-webkit-animation:download-pulse 0.9s linear infinite; */
+			-webkit-box-shadow:0 0 30px rgba(0, 0, 0, 0.9);
 		}
 		
 		#description a:active {
