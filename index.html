@@ -4,15 +4,8 @@
 	<meta charset="UTF-8" />
 	<title>WhiteLion</title>
 	<style>
-		
-		@-webkit-keyframes notification-1 {
-			0%   { opacity: 0; -webkit-transform: scale(0.4);}
-			70%	 { opacity: 0.3; -webkit-transform: scale(1);}
-			80%	 {  opacity: 0.6;-webkit-transform: scale(1.1); }
-			100%  { opacity: 0.9; -webkit-transform: scale(1); }
-		}
 
-		@-webkit-keyframes notification-2 {
+		@-webkit-keyframes notification {
 			0%  {
 				opacity: 0;
 				-webkit-transform: scale(0.6);
@@ -68,7 +61,7 @@
 			opacity: 0.8;
 			width: 280px;
 			padding: 10px;
-			-webkit-animation: notification-2 0.7s ease;
+			-webkit-animation: notification 0.7s ease;
 			-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.4), 0 0 0 1px #FBFBFB inset;
 			display:none;
 		}
@@ -215,7 +208,6 @@
 			width: 22px;
 			text-decoration:none !important;
 		}
-
 		
 		a#download:hover {
 			-webkit-box-shadow:0 0 30px rgba(0, 0, 0, 0.9);
@@ -266,17 +258,19 @@
 		
 	</style>
 	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-25979504-1']);
+		_gaq.push(['_trackPageview']);
 
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-25979504-1']);
-	  _gaq.push(['_trackPageview']);
+		 (function() {
+		    var ga = document.createElement('script');
+		    ga.type = 'text/javascript';
+		    ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl': 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(ga, s);
 
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-
+		})();
 	</script>
 </head>
 <body>
@@ -349,20 +343,21 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script type="text/javascript">
 		
-		//
-		setInterval(function(){
-			if ($('div.notification.active')[0] === $('div.notification:last')[0]) {
-				$('div.notification.active').removeClass('active')
-				$('div.notification:first').addClass('active')
+		// shows all the notifications in loop, one after another
+		setInterval(function() {
+			
+			var notificationActive = document.querySelector('div.notification.active')
+			
+			if (notificationActive.nextElementSibling !== null) {
+				notificationActive.className = 'notification'
+				notificationActive.nextElementSibling.className = 'notification active'
 			} else {
-				$('div.notification.active')
-					.removeClass('active')
-					.next()
-					.addClass('active')
+				notificationActive.className = 'notification'
+				document.querySelector('div.notification').className = 'notification active'
 			}
+			
 		}, 5*1000)
 		
 	</script>
