@@ -340,7 +340,7 @@
 				</div>
 				<div class="highlight">
 					<h2>Spread the Word</h2>
-					<p>Spread the word through Twitter and Facebook. Please consider using this URI <a href="#">goo.gl/hFgT</a></p>
+					<p>Spread the word through Twitter and Facebook. Please consider using this URI <a href="http://goo.gl/wPuOW">http://goo.gl/wPuOW</a></p>
 				</div>
 			</div>
 		</div>
@@ -350,13 +350,10 @@
 		
 		//
 		setInterval(function(){
-			window.notification = $('div.notification.active')
 			if ($('div.notification.active')[0] === $('div.notification:last')[0]) {
-				console.log('if')
 				$('div.notification.active').removeClass('active')
 				$('div.notification:first').addClass('active')
 			} else {
-				console.log('else')
 				$('div.notification.active')
 					.removeClass('active')
 					.next()
