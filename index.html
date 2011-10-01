@@ -1,10 +1,74 @@
+<!--
+
+                       .,,uod8B8bou,,.
+              ..,uod8BBBBBBBBBBBBBBBBRPFT?l!i:.
+         ,=m8BBBBBBBBBBBBBBBRPFT?!||||||||||||||
+         !...:!TVBBBRPFT||||||||||!!^^""'   ||||
+         !.......:!?|||||!!^^""'            ||||							
+         !.........||||                     ||||
+         !.........||||  ##                 ||||
+         !.........||||                     ||||
+         !.........||||                     ||||
+         !.........||||                     ||||
+         !.........||||                     ||||
+         `.........||||                    ,||||
+          .;.......||||               _.-!!|||||
+   .,uodWBBBBb.....||||       _.-!!|||||||||!:'
+!YBBBBBBBBBBBBBBb..!|||:..-!!|||||||!iof68BBBBBb.... 
+!..YBBBBBBBBBBBBBBb!!||||||||!iof68BBBBBBRPFT?!::   `.
+!....YBBBBBBBBBBBBBBbaaitf68BBBBBBRPFT?!:::::::::     `.
+!......YBBBBBBBBBBBBBBBBBBBRPFT?!::::::;:!^"`;:::       `.  
+!........YBBBBBBBBBBRPFT?!::::::::::^''...::::::;         iBBbo.
+`..........YBRPFT?!::::::::::::::::::::::::;iof68bo.      WBBBBbo.
+  `..........:::::::::::::::::::::::;iof688888888888b.     `YBBBP^'
+    `........::::::::::::::::;iof688888888888888888888b.     `
+      `......:::::::::;iof688888888888888888888888888888b.
+        `....:::;iof688888888888888888888888888888888899fT!  
+          `..::!8888888888888888888888888888888899fT|!^"'   
+            `' !!988888888888888888888888899fT|!^"' 
+                `!!8888888888888888899fT|!^"'
+                  `!988888888899fT|!^"'
+                    `!9899fT|!^"'
+                      `!^"'
+
+
+Get Away! My codes r perfect!
+-->
 <!DOCTYPE HTML>
-<html lang="en">
+<html>
 <head>
+	<meta name="description" content="A Growl theme based on Mac OS X Lion">
+	<meta name="keywords" value="growl, theme, mac os x, lion, 10.7, apple, notification, os x, mac, design" />
 	<meta charset="UTF-8" />
 	<title>WhiteLion</title>
+	<link rel="shortcut icon" href="http://caiogondim.com/wp-content/themes/aguarde/images/favicon.png" />
 	<style>
-
+	
+		/* General rules
+		---------------------------------------- */
+		body {
+			margin:0;
+			font-family: 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			color:#333;
+		}
+		
+		::selection {
+			background:#000;
+			color:#EEE;
+		}
+		
+		/* Notifications
+		---------------------------------------- */
+		#notifications-wrapper {
+			height:380px;
+			width:100%;
+			background: #DDD url(images/lion-bg-cropped-2_mini.jpeg) top center;
+			position:fixed;
+			top:0;
+			left:0;
+			z-index:1;
+		}
+		
 		@-webkit-keyframes notification {
 			0%  {
 				opacity: 0;
@@ -14,41 +78,6 @@
 				opacity: 0.8;
 				-webkit-transform: scale(1);
 			}
-		}
-		
-		@-webkit-keyframes download-pulse {
-			0% {
-				-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.7);
-			}
-			
-			50% {
-				-webkit-box-shadow:0 0 30px rgba(0, 0, 0, 0.7);
-			}
-			
-			100% {
-				-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.7);
-			}
-		}
-		
-		body {
-			margin:0;
-			font-family: 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-			color:#333;
-		}
-		
-		::selection {
-			background:#000;
-			color:#FFF;
-		}
-		
-		#banner {
-			height:380px;
-			width:100%;
-			background: #DDD url(images/lion-bg-cropped-2_mini.jpeg) top center;
-			position:fixed;
-			top:0;
-			left:0;
-			z-index:1;
 		}
 		
 		.notification {
@@ -110,18 +139,21 @@
 			text-shadow: 0px 1px 1px rgba(255,255,255,1);
 		}
 		
-		#wrapper {
+		#sections-wrapper {
 			width:800px;
 			margin:80px auto;
 		}
 		
-		#main {
-
-			width:100%;
+		/* Header
+		---------------------------------------- */		
+		
+		header {
+			width:800px;
 			position:relative;
+			margin:0 auto;
 		}
 		
-		#main::after {
+		header::after {
 			content:"";
 			display:block;
 			height:0;
@@ -132,37 +164,13 @@
 			border-bottom:1px solid #FFF;
 		}
 		
-		#main p a {
-			text-decoration:none;
-			color:#404040;
-		}
-		
-		#main p a:visited {
-			
-		}
-		
-		#main p a:hover {
-			text-decoration:underline;
-		}
-		
-		#description {
-			-webkit-box-shadow:0 0 10px black;
-			height:1000px;
-			width:100%;
-			margin-top:350px;
-			background: url(images/noise-3.png), -webkit-gradient(linear, left top, left bottom, from(#BBB), to(#FFF));
-			z-index:200;
-			position:relative;
-			border-top:1px solid white;
-		}
-		
-		#description h1 {
+		header h1 {
 			font-size:60px;
 			font-weight:200;
 			text-shadow:#FFF 0 1px 2px;
 		}
-		
-		#description #main > p {
+
+		header h2 {
 			font-size:24px;
 			font-weight:200;
 			line-height:130%;
@@ -172,7 +180,39 @@
 			-webkit-hyphens:auto;
 		}
 		
-		a#download {
+		header h2 {
+			font-weight:200;
+			color:#666;
+		}
+		
+		header h2 a {
+			text-decoration:none;
+			color:#404040;
+		}
+		
+		header h2 a:visited {
+			
+		}
+		
+		header h2 a:hover {
+			text-decoration:underline;
+		}
+		
+		@-webkit-keyframes download-pulse {
+			0% {
+				-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.7);
+			}
+			
+			50% {
+				-webkit-box-shadow:0 0 30px rgba(0, 0, 0, 0.7);
+			}
+			
+			100% {
+				-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.7);
+			}
+		}
+		
+		header a[download] {
 			font-size:25px;
 			font-weight:200;
 			text-decoration:none;
@@ -193,7 +233,7 @@
 			-webkit-transition:-webkit-box-shadow linear 0.3s;
 		}
 		
-		a#download::before {
+		header a[download]::before {
 			content: "⬇";
 			position:absolute;
 			-webkit-border-radius:30px;
@@ -209,19 +249,31 @@
 			text-decoration:none !important;
 		}
 		
-		a#download:hover {
+		header a[download]:hover {
 			-webkit-box-shadow:0 0 30px rgba(0, 0, 0, 0.9);
 		}
 		
-		#description a:active {
+		header a[download]:active {
 			background:-webkit-gradient(linear, left top, left bottom, from(#371483), to(#6E25FF));
 		}
 		
-		div#highlights {
-
+		/* Description
+		---------------------------------------- */		
+		#description {
+			-webkit-box-shadow:0 0 10px black;
+			height:1000px;
+			width:100%;
+			margin-top:350px;
+			background: url(images/noise-3.png), -webkit-gradient(linear, left top, left bottom, from(#BBB), to(#FFF));
+			z-index:200;
+			position:relative;
+			border-top:1px solid white;
 		}
 		
-		div.highlight {
+		/* Section
+		---------------------------------------- */		
+		
+		section {
 			float:left;
 			width:350px;
 			margin-bottom:30px;
@@ -230,26 +282,26 @@
 			-webkit-hyphens:auto;
 		}
 		
-		div.highlight a {
+		section a {
 			color:#404040;
 			text-decoration:none;
 		}
 		
-		div.highlight a:hover {
+		section a:hover {
 			text-decoration:underline;
 		}
 		
-		div.highlight:nth-child(even) {
+		section:nth-child(even) {
 			margin-left:80px;
 		}
 		
-		div.highlight h2 {
+		section h1 {
 			font-weight:200;
 			font-size:30px;
 			text-shadow:#FFF 0 1px 1px;
 		}
 		
-		div.highlight p {
+		section p {
 			line-height:150%;
 			font-size:16px;
 			color:#666;
@@ -257,7 +309,7 @@
 		}
 		
 	</style>
-	<script type="text/javascript">
+	<script>
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-25979504-1']);
 		_gaq.push(['_trackPageview']);
@@ -274,7 +326,7 @@
 	</script>
 </head>
 <body>
-	<div id="banner">
+	<div id="notifications-wrapper">
 		<div class="notification active" id="notification-itunes">
 			<div>
 				<img class="icon" src="images/itunes-icon.png" />
@@ -317,33 +369,33 @@
 		</div>
 	</div>
 	<div id="description">
-		<div id="wrapper">
-			<div id="main">
-				<h1>WhiteLion</h1>
-				<a href="https://github.com/downloads/caiogondim/white-lion/white-lion.zip" id="download">Download</a>
-				<p>WhiteLion is a theme for Growl developed by <a href="http://twitter.com/caio_gondim">@caio_gondim</a> that tries to be as Lion-esque as possible. Some UI of the new OS X, like the new QuickLook and Popovers, served as the basis for this theme.</p>
-			</div>			
-			<div id="highlights">
-				<div class="highlight">
-					<h2>Built to Beauty</h2>
-					<p>This theme was very carefully pixel-perfect built. If you have discovered some errors or have some considerations to make, please, open an issue <a href="#">here</a>.</p>
-				</div>			
-				<div class="highlight">
-					<h2>Open Source</h2>
-					<p>This project is open source. Please, feel free to <a href="#">fork</a> it or open an <a href="#">issue</a> to help make this better for everybody.</p>
-				</div>
-				<div class="highlight">
-					<h2>Inspiration</h2>
-					<p>WhiteLion is heavily inspired in <a href="http://christopherlobay.com/#mono">Mono</a> by Christopher Lobay and <a href="http://www.andreas-heiberg.com/Blog/2011/07/23/growl-growlinglion-lion-inspired-growl-theme/">GrowlingLion</a> by Andreas Heiberg</p>
-				</div>
-				<div class="highlight">
-					<h2>Spread the Word</h2>
-					<p>Spread the word through Twitter and Facebook. Please consider using this shrtened URI <a href="http://goo.gl/wPuOW">http://goo.gl/wPuOW</a></p>
-				</div>
-			</div>
+		<header>
+			<hgroup>
+				<h1>WhiteLion</h1>					
+				<h2>WhiteLion is a theme for Growl developed by <a href="http://twitter.com/caio_gondim">@caio_gondim</a> that tries to be as Lion-esque as possible. Some UI of the new OS X, like the new QuickLook and Popovers, served as the basis for this theme.</h2>
+			</hgroup>
+			<a href="https://github.com/downloads/caiogondim/white-lion/white-lion.zip" download="white-lion.zip">Download</a>
+		</header>
+		<div id="sections-wrapper">			
+			<section>
+				<h1>Built to Beauty</h1>
+				<p>This theme was very carefully pixel-perfect built. If you have discovered some errors or have some considerations to make, please, open an issue <a href="#">here</a>.</p>
+			</section>			
+			<section>
+				<h1>Open Source</h1>
+				<p>This project is open source under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons CC BY</a> license. Please, feel free to <a href="#">fork</a> it or open an <a href="#">issue</a> to help make this better for everybody.</p>
+			</section>
+			<section>
+				<h1>Inspiration</h1>
+				<p>WhiteLion is heavily inspired in <a href="http://christopherlobay.com/#mono">Mono</a> by Christopher Lobay and <a href="http://www.andreas-heiberg.com/Blog/2011/07/23/growl-growlinglion-lion-inspired-growl-theme/">GrowlingLion</a> by Andreas Heiberg</p>
+			</section>
+			<section>
+				<h1>Spread the Word</h1>
+				<p>Spread the word through Twitter and Facebook. Please consider using this shrtened URI <a href="http://goo.gl/wPuOW">http://goo.gl/wPuOW</a></p>
+			</section>
 		</div>
 	</div>
-	<script type="text/javascript">
+	<script>
 		
 		// shows all the notifications in loop, one after another
 		setInterval(function() {
