@@ -1,37 +1,4 @@
 <!--
-
-                       .,,uod8B8bou,,.
-              ..,uod8BBBBBBBBBBBBBBBBRPFT?l!i:.
-         ,=m8BBBBBBBBBBBBBBBRPFT?!||||||||||||||
-         !...:!TVBBBRPFT||||||||||!!^^""'   ||||
-         !.......:!?|||||!!^^""'            ||||							
-         !.........||||                     ||||
-         !.........||||  ##                 ||||
-         !.........||||                     ||||
-         !.........||||                     ||||
-         !.........||||                     ||||
-         !.........||||                     ||||
-         `.........||||                    ,||||
-          .;.......||||               _.-!!|||||
-   .,uodWBBBBb.....||||       _.-!!|||||||||!:'
-!YBBBBBBBBBBBBBBb..!|||:..-!!|||||||!iof68BBBBBb.... 
-!..YBBBBBBBBBBBBBBb!!||||||||!iof68BBBBBBRPFT?!::   `.
-!....YBBBBBBBBBBBBBBbaaitf68BBBBBBRPFT?!:::::::::     `.
-!......YBBBBBBBBBBBBBBBBBBBRPFT?!::::::;:!^"`;:::       `.  
-!........YBBBBBBBBBBRPFT?!::::::::::^''...::::::;         iBBbo.
-`..........YBRPFT?!::::::::::::::::::::::::;iof68bo.      WBBBBbo.
-  `..........:::::::::::::::::::::::;iof688888888888b.     `YBBBP^'
-    `........::::::::::::::::;iof688888888888888888888b.     `
-      `......:::::::::;iof688888888888888888888888888888b.
-        `....:::;iof688888888888888888888888888888888899fT!  
-          `..::!8888888888888888888888888888888899fT|!^"'   
-            `' !!988888888888888888888888899fT|!^"' 
-                `!!8888888888888888899fT|!^"'
-                  `!988888888899fT|!^"'
-                    `!9899fT|!^"'
-                      `!^"'
-
-
 Get Away! My codes r perfect!
 -->
 <!DOCTYPE HTML>
@@ -46,6 +13,10 @@ Get Away! My codes r perfect!
 	
 		/* General rules
 		---------------------------------------- */
+		* {
+			-webkit-font-smoothing: subpixel-antialiased;
+		}
+		
 		body {
 			margin:0;
 			font-family: 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -151,6 +122,7 @@ Get Away! My codes r perfect!
 			width:800px;
 			position:relative;
 			margin:0 auto;
+			-webkit-perspective:1200;
 		}
 		
 		header::after {
@@ -257,6 +229,21 @@ Get Away! My codes r perfect!
 			background:-webkit-gradient(linear, left top, left bottom, from(#371483), to(#6E25FF));
 		}
 		
+		header a[download] {
+			-webkit-transition:all .6s ease-in-out;
+			-webkit-transform-style: preserve-3d;
+			/*-webkit-backface-visibility: hidden;*/
+		}
+		
+		header a[download].flip {
+			-webkit-transform: rotateY(180deg);
+			top:50px;
+			right:300px;
+			height:100px;
+			width:300px;
+			background:-webkit-gradient(linear, left top, left bottom, from(#DDD), to(#333));
+		}
+		
 		/* Description
 		---------------------------------------- */		
 		#description {
@@ -307,6 +294,162 @@ Get Away! My codes r perfect!
 			color:#666;
 			text-shadow:#FFF 0 1px 1px;
 		}
+		
+		/* 
+		---------------------------------------- */
+		div#container {
+			position:absolute;
+			top:400px;
+			right:400px;
+			height:200px;
+			width:200px;
+			-webkit-transform-style:preserve-3d;
+			-webkit-transition:0.7s;
+			-webkit-backface-visibility: hidden;
+		}
+		
+		div#container:hover {
+			
+		}
+		
+		div#outer-container {
+			-webkit-perspective:1000;
+			position:absolute;
+			width:500px;
+			height:500px;
+			top:100px;
+			left:100px;
+		}
+		
+		div#outer-container:hover #container {
+			-webkit-transform: rotateY(180deg);
+		}
+		
+		div#front {
+			background-color:purple;
+			height:200px;
+			width:200px;
+			position:absolute;
+		}
+		
+		div#back {
+			background-color:red;
+			width:150px;
+			height:150px;
+			position:absolute;
+			-webkit-transform: rotateY(180deg);
+		}
+		
+		/* 
+		---------------------------------------- */
+		div#fader {
+			position:absolute;
+			width:100%;
+			height:9999px;
+			top:0;
+			left:0;
+			background-color:black;
+			opacity:0.6;
+			z-index:999;
+			-webkit-transition: all ease 0.6s;
+		}
+		
+		div#fader.hidden {
+			opacity:0;
+			pointer-events:none;
+		}
+		
+		div#instructions {
+			position:fixed;
+			top:-250px;
+			left:50%;
+			margin-left:-146px;
+			width:200px;
+			height:225px;
+			z-index:9999;
+			border: 1px solid #BEBEBE;
+			background-color: rgb(240, 240, 240);
+			border-radius: 5px;
+			opacity: 0.9;
+			width: 280px;
+			padding: 5px;
+			-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.4), 0 0 0 1px #FBFBFB inset;
+			-webkit-transition: all ease 0.6s;
+		}
+		
+		div#instructions.show {
+			top:200px;
+		}
+		
+		div#instructions h2 {			
+			margin:0 0 5px 0;
+			text-align: center;
+			color:rgb(65, 65, 90);
+			font-weight:bold;
+			font-size: 13px;
+			color: #404040;
+			border: none;
+			text-shadow: 0px 1px 1px rgba(255,255,255,1);
+			
+		}
+		
+		div#instructions ol {
+			/*background-color:white;*/
+			border-radius:2px;
+			/*border:1px inset rgba(200, 200, 200, 0.5);*/
+			padding:10px 20px 0 20px;
+			margin:0;
+			list-style-position:outside;
+		}
+		
+		div#instructions ol li {
+			margin-left:20px;
+			margin-top:5px;			
+			font-size: 14px;
+			color: #838392;
+			line-height:140%;
+			text-shadow: 0px 1px 1px rgba(255,255,255,1);
+		}
+		
+		div#instructions ol::before {
+			position:absolute;
+			content:"";
+			top:30px;
+			left:25px;
+			border-bottom: 1px solid #FBFBFB;
+			border-top: 1px solid #BEBEBE;
+			width:240px;
+			height:0px;
+
+		}
+		
+		a#instructions-close {
+			position:absolute;
+			top:0;
+			left:0;
+			background:-webkit-gradient(linear, left top, left bottom, from(#808080), to(#B1B1B1));
+			text-shadow: 0px 1px 3px rgba(0,0,0,0.6);
+			border-radius:10px;
+			color: rgb(240, 240, 240);
+			-webkit-box-shadow: 0 0 3px rgba(255, 255, 255, 0.9);
+			font-size:10px;
+			text-decoration:none;
+			font-weight:700;
+			padding:0 0 4px 2px;
+			width:8px;
+			height:6px;
+			margin:5px 0 0 5px;
+		}
+		
+		a#instruction-close::after {
+			position:absolute;
+			content:"";
+			top:0;
+			left:0;
+			border-left: 1px solid #FBFBFB;
+			border-right: 1px solid #BEBEBE;
+		}
+		
 		
 	</style>
 	<script>
@@ -374,7 +517,28 @@ Get Away! My codes r perfect!
 				<h1>WhiteLion</h1>					
 				<h2>WhiteLion is a theme for Growl developed by <a href="http://twitter.com/caio_gondim">@caio_gondim</a> that tries to be as Lion-esque as possible. Some UI of the new OS X, like the new QuickLook and Popovers, served as the basis for this theme.</h2>
 			</hgroup>
-			<a href="https://github.com/downloads/caiogondim/white-lion/white-lion.zip" download="white-lion.zip">Download</a>
+			<a href="https://github.com/downloads/caiogondim/white-lion/white-lion.zip" download="white-lion.zip">Download</a>			
+			<!-- <div id="flip-outer-container">
+				<div id="flip-container">
+					<div id="flip-front">
+						<a href="#" download="white-lion.zip">Download</a>
+					</div>
+					<div id="flip-back">
+						<div id="instructions">
+							<a href="#" id="instructions-close"></a>
+							<h2>Instructions</h2>
+							<ol>
+								<li>Unzip white-lion.zip</li>
+								<li>Double-click the unziped file white-lion.growStyle</li>
+								<li>Now the Growl window will open</li>
+								<li>Go to the <em>Display Options</em> tab</li>
+								<li>Int the <em>Default Style</em> select, set WhiteLion as your default theme</li>
+								<li>Enjoy =)</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>						 -->
 		</header>
 		<div id="sections-wrapper">			
 			<section>
@@ -395,23 +559,74 @@ Get Away! My codes r perfect!
 			</section>
 		</div>
 	</div>
-	<script>
+	<div id="fader" class="hidden"></div>
+	<div id="instructions">
+		<a href="#" id="instructions-close"></a>
+		<h2>Instructions</h2>
+		<ol>
+			<li>Unzip white-lion.zip</li>
+			<li>Double-click the unziped file white-lion.growStyle</li>
+			<li>Now the Growl window will open</li>
+			<li>Go to the <em>Display Options</em> tab</li>
+			<li>In the <em>Default Style</em> select, set WhiteLion as your default theme</li>
+			<li>Enjoy =)</li>
+		</ol>
+	</div>
+	<script id="models">
 		
-		// shows all the notifications in loop, one after another
-		setInterval(function() {
-			
-			var notificationActive = document.querySelector('div.notification.active')
-			
-			if (notificationActive.nextElementSibling !== null) {
-				notificationActive.className = 'notification'
-				notificationActive.nextElementSibling.className = 'notification active'
-			} else {
-				notificationActive.className = 'notification'
-				document.querySelector('div.notification').className = 'notification active'
+		//
+		var Instructions = {
+			show: function() {
+				document.querySelector('div#fader').classList.remove('hidden')
+				document.querySelector('div#instructions').classList.add('show')
+				document.querySelector('body').style.overflow = 'hidden'
+			},
+			hide: function(event) {
+				document.querySelector('div#fader').classList.add('hidden')
+				document.querySelector('div#instructions').classList.remove('show')
+				document.querySelector('body').style.overflow = 'visible'
+				event.preventDefault()
 			}
-			
-		}, 5*1000)
+		}
+		
+		//
+		var Notifications = {
+			loop: function() {
+				setInterval(function() {
+
+					var notificationActive = document.querySelector('div.notification.active')
+
+					if (notificationActive.nextElementSibling !== null) {
+						notificationActive.className = 'notification'
+						notificationActive.nextElementSibling.className = 'notification active'
+					} else {
+						notificationActive.className = 'notification'
+						document.querySelector('div.notification').className = 'notification active'
+					}
+
+				}, 5*1000)
+			}
+		}
 		
 	</script>
+	<script id="events">
+	
+		// shows all the notifications in loop, one after another
+		Notifications.loop()
+		
+		//
+		document.querySelector('header a[download]').onclick = Instructions.show
+		
+		//
+		window.onkeyup = function(event) {
+			if (event.keyCode == 27) {
+				Instructions.hide
+			}
+		}		
+		
+		//
+		document.querySelector('a#instructions-close').onclick = Instructions.hide
+		
+	</script>	
 </body>
 </html>
