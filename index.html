@@ -235,15 +235,6 @@ Get Away! My codes r perfect!
 			/*-webkit-backface-visibility: hidden;*/
 		}
 		
-		header a[download].flip {
-			-webkit-transform: rotateY(180deg);
-			top:50px;
-			right:300px;
-			height:100px;
-			width:300px;
-			background:-webkit-gradient(linear, left top, left bottom, from(#DDD), to(#333));
-		}
-		
 		/* Description
 		---------------------------------------- */		
 		#description {
@@ -258,8 +249,7 @@ Get Away! My codes r perfect!
 		}
 		
 		/* Section
-		---------------------------------------- */		
-		
+		---------------------------------------- */	
 		section {
 			float:left;
 			width:350px;
@@ -295,52 +285,7 @@ Get Away! My codes r perfect!
 			text-shadow:#FFF 0 1px 1px;
 		}
 		
-		/* 
-		---------------------------------------- */
-		div#container {
-			position:absolute;
-			top:400px;
-			right:400px;
-			height:200px;
-			width:200px;
-			-webkit-transform-style:preserve-3d;
-			-webkit-transition:0.7s;
-			-webkit-backface-visibility: hidden;
-		}
-		
-		div#container:hover {
-			
-		}
-		
-		div#outer-container {
-			-webkit-perspective:1000;
-			position:absolute;
-			width:500px;
-			height:500px;
-			top:100px;
-			left:100px;
-		}
-		
-		div#outer-container:hover #container {
-			-webkit-transform: rotateY(180deg);
-		}
-		
-		div#front {
-			background-color:purple;
-			height:200px;
-			width:200px;
-			position:absolute;
-		}
-		
-		div#back {
-			background-color:red;
-			width:150px;
-			height:150px;
-			position:absolute;
-			-webkit-transform: rotateY(180deg);
-		}
-		
-		/* 
+		/* Instructions
 		---------------------------------------- */
 		div#fader {
 			position:fixed;
@@ -522,28 +467,7 @@ Get Away! My codes r perfect!
 				<h1>WhiteLion</h1>					
 				<h2>WhiteLion is a theme for Growl developed by <a href="http://twitter.com/caio_gondim">@caio_gondim</a> that tries to be as Lion-esque as possible. Some UI of the new OS X, like the new QuickLook and Popovers, served as the basis for this theme.</h2>
 			</hgroup>
-			<a href="https://github.com/downloads/caiogondim/white-lion/white-lion.zip" download="white-lion.zip">Download</a>			
-			<!-- <div id="flip-outer-container">
-				<div id="flip-container">
-					<div id="flip-front">
-						<a href="#" download="white-lion.zip">Download</a>
-					</div>
-					<div id="flip-back">
-						<div id="instructions">
-							<a href="#" id="instructions-close"></a>
-							<h2>Instructions</h2>
-							<ol>
-								<li>Unzip white-lion.zip</li>
-								<li>Double-click the unziped file white-lion.growStyle</li>
-								<li>Now the Growl window will open</li>
-								<li>Go to the <em>Display Options</em> tab</li>
-								<li>Int the <em>Default Style</em> select, set WhiteLion as your default theme</li>
-								<li>Enjoy =)</li>
-							</ol>
-						</div>
-					</div>
-				</div>
-			</div>						 -->
+			<a href="https://github.com/downloads/caiogondim/white-lion/white-lion.zip" download="white-lion.zip">Download</a>
 		</header>
 		<div id="sections-wrapper">			
 			<section>
@@ -564,8 +488,8 @@ Get Away! My codes r perfect!
 			</section>
 		</div>
 	</div>
-	<div id="fader" class=""></div>
-	<div id="instructions" class="show">
+	<div id="fader" class="hidden"></div>
+	<div id="instructions">
 		<a href="#" id="instructions-close"></a>
 		<h2>Instructions</h2>
 		<ol>
