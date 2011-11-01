@@ -112,7 +112,7 @@ Get Away! My codes r perfect!
 		
 		#sections-wrapper {
 			width:800px;
-			margin:80px auto;
+			margin:65px auto;
 		}
 		
 		/* Header
@@ -436,20 +436,25 @@ Get Away! My codes r perfect!
 			text-decoration:none;
 			font-weight:700;
 			padding:0 0 4px 2px;
-			width:8px;
-			height:6px;
+			width:10px;
+			height:8px;
 			margin:5px 0 0 5px;
 		}
 		
-		a#instruction-close::after {
+		a#instructions-close::after {
 			position:absolute;
-			content:"";
+			content:"x";
 			top:0;
 			left:0;
-			border-left: 1px solid #FBFBFB;
-			border-right: 1px solid #BEBEBE;
+			width:20px;
+			height:20px;
+			font-size:10px;
+			font-weight:bold;
+			z-index:999999;
+			padding-left:3px;
+			margin-top:-1px;
+			text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
 		}
-		
 		
 	</style>
 	<script>
@@ -559,8 +564,8 @@ Get Away! My codes r perfect!
 			</section>
 		</div>
 	</div>
-	<div id="fader" class="hidden"></div>
-	<div id="instructions">
+	<div id="fader" class=""></div>
+	<div id="instructions" class="show">
 		<a href="#" id="instructions-close"></a>
 		<h2>Instructions</h2>
 		<ol>
@@ -597,11 +602,11 @@ Get Away! My codes r perfect!
 					var notificationActive = document.querySelector('div.notification.active')
 
 					if (notificationActive.nextElementSibling !== null) {
-						notificationActive.className = 'notification'
-						notificationActive.nextElementSibling.className = 'notification active'
-					} else {
-						notificationActive.className = 'notification'
-						document.querySelector('div.notification').className = 'notification active'
+						notificationActive.classList.remove('active')
+						notificationActive.nextElementSibling.classList.add('active')
+					} else {						
+						notificationActive.classList.remove('active')
+						document.querySelector('div.notification').classList.add('active')
 					}
 
 				}, 5*1000)
@@ -626,6 +631,7 @@ Get Away! My codes r perfect!
 		
 		//
 		document.querySelector('a#instructions-close').onclick = Instructions.hide
+		document.querySelector('div#fader').onclick = Instructions.hide
 		
 	</script>	
 </body>
